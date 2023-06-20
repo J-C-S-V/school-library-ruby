@@ -4,6 +4,30 @@ class Nameable
   end
 end
 
+class Decorator < Nameable
+  def initialize(nameable)
+    @nameable = nameable
+  end
+
+  def correct_name
+    @nameable.correct_name
+  end
+end
+
+class CapitalizeDecorator < Decorator
+  def correct_name
+    super.capitalize
+  end
+end
+
+class TrimmerDecorator < Decorator
+  MAX_LENGTH = 10
+
+  def correct_name
+    super[0...MAX_LENGTH]
+  end
+end
+
 class Person < Nameable
   attr_reader :id
   attr_accessor :age, :name
