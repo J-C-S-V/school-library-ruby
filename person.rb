@@ -1,4 +1,10 @@
-class Person
+class Nameable
+  def correct_name
+    raise NotImplementedError
+  end
+end
+
+class Person < Nameable
   attr_reader :id
   attr_accessor :age, :name
 
@@ -17,5 +23,9 @@ class Person
 
   def of_age?
     @age >= 18
+  end
+
+  def correct_name
+    @name
   end
 end
