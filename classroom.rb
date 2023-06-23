@@ -1,6 +1,6 @@
-class classroom
+class Classroom
   attr_accessor :label, :students
-  
+
   def initialize(label)
     @label = label
     @students = [] # Create the has-many side (a classroom has many students).
