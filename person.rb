@@ -56,11 +56,16 @@ class Person < Nameable
   end
 end
 
-person = Person.new(22, 'maximilianus')
-puts person.correct_name
+class classroom
+  attr_accessor :label, :students
+  
+  def initialize(label)
+    @label = label
+    @students = [] # Create the has-many side (a classroom has many students).
+  end
 
-capitalized_person = CapitalizeDecorator.new(person)
-puts capitalized_person.correct_name
-
-capitalized_trimmed_person = TrimmerDecorator.new(capitalized_person)
-puts capitalized_trimmed_person.correct_name
+  def add_student(student)
+    @students << student
+    student.classroom = self # Create the belongs-to side (a student belongs to a classroom).
+  end
+end
