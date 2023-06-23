@@ -7,7 +7,7 @@ class Book
     @rentals = [] # Create the has-many side (a book has many rentals).
   end
 
-  def add_rental(rental)
-    @rentals << rental # The << operator is used to push an element into an array.
+  def add_rental(person, date)
+    Rental.new(date, self, person) # Create a new rental, with the book and person.
   end
 end
