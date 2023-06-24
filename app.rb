@@ -130,4 +130,26 @@ class App
     puts "Rental created successfully"
     run_program
   end
+
+  def list_all_rentals
+    if @rentals_list.empty?
+      puts 'There are no rentals to show. Add a new one.'
+    else
+      print "Enter person's id: "
+      id = gets.chomp.to_i
+      found_person = @people_list.find { |person| person.id == id }
+      if found_person
+        found_person.rentals.each do |rental|
+          puts "Rental date: #{rental.date}, Book: #{rental.book.title} by #{rental.book.author} "
+        end
+      else
+        puts 'There is no rental data for that person ID.'
+      end
+    end
+    run_program
+  end
+
+  def exit
+    Kernel.exit(false)
+  end
 end
