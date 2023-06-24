@@ -42,4 +42,20 @@ class App
       run_program
     end
   end
+
+  private
+
+  def list_all_books
+    @books_list.each do |book|
+      puts "Title: #{book.title}, Author: #{book.author}"
+    end
+    run_program
+  end
+
+  def list_all_people
+    @people_list.each do |person|
+      puts "[#{person.class.name}] Name: #{person.name}, ID: #{person.id}, Age: #{person.age}, "
+    end
+    run_program
+  end
 end
