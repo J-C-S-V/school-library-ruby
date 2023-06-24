@@ -14,6 +14,7 @@ class App
 
   def run_program
     puts 'Please choose an option by entering a number: '
+    puts
     puts '1 - List all books'
     puts '2 - List all people'
     puts '3 - Create a person'
@@ -22,6 +23,10 @@ class App
     puts '6 - List all rentals for a given person id'
     puts '7 - Exit'
     choice = gets.chomp
+    choice_method(choice)
+  end
+
+  def choice_method(choice)
     case choice
     when '1'
       list_all_books
@@ -35,11 +40,8 @@ class App
       create_rental
     when '6'
       list_all_rentals
-    when '7'
-      exit
     else
-      puts 'Invalid option. Please try again.'
-      run_program
+      exit
     end
   end
 
@@ -84,7 +86,7 @@ class App
     classroom = gets.chomp
     student = Student.new(classroom, age, name, parent_permission: parent_permission)
     @people_list << student
-    puts "Student created successfully"
+    puts 'Student created successfully'
     run_program
   end
 
@@ -97,7 +99,7 @@ class App
     specialization = gets.chomp
     teacher = Teacher.new(age, name, specialization)
     @people_list << teacher
-    puts "Teacher created with successfully"
+    puts 'Teacher created with successfully'
     run_program
   end
 
@@ -108,7 +110,7 @@ class App
     author = gets.chomp
     book = Book.new(title, author)
     @books_list << book
-    puts "Book created Successfully"
+    puts 'Book created Successfully'
     run_program
   end
 
@@ -127,7 +129,7 @@ class App
     date = gets.chomp
     rental = Rental.new(date, @books_list[book_index], @people_list[person_index])
     @rentals_list << rental
-    puts "Rental created successfully"
+    puts 'Rental created successfully'
     run_program
   end
 
